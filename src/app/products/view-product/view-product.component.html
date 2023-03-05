@@ -1,0 +1,35 @@
+<!-- when logged in -->
+<app-user-header *ngIf="isLogin"></app-user-header>
+
+<!-- when not logged in -->
+<app-product-header *ngIf="!isLogin"></app-product-header>
+
+<!-- Product section-->
+
+    <div class="container px-2 px-lg-5 my-5">
+        <div class="row gx-4 gx-lg-5 align-items-center">
+            <div class="col-md-6 text-center">
+                <img class="" [src]="product.image" alt="..." width="350px" height="350px" />
+            </div>
+            <div class="col-md-6 product">
+                <div class="small mb-1">SKU: {{ product.id }}</div>
+                <h4 class="fw-bolder">{{ product.title }}</h4>
+                <div class="fs-5 mb-2">
+                    <span>$&nbsp;{{ product.price }}</span>
+                </div>
+                <div class="mb-2 d-flex">
+                    <span class="disabled placeholder bg-success text-white p-1" style="font-size:small;">{{ product.rating.rate }}&nbsp;<i class="fa-solid fa-star" style="font-size:x-small;"></i></span> 
+                    <span class="ms-2">({{ product.rating.count }})</span>
+                </div>
+                <div class="lead">
+                    <h5>Product Description</h5>
+                    <span>{{ product.description }}</span>
+                </div>
+                <div class="d-flex mt-4">
+                    <button type="button" class="btn btn-cart ms-5 text-white" (click)="addWishlist(product)"><i class="fa-regular fa-heart"></i>&nbsp;&nbsp;Add to wishlist</button>
+                    <button class="btn btn-cart ms-5 text-white" (click)="addCart(product)"><i class="fa-solid fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+

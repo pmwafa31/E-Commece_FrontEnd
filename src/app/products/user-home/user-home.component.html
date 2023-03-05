@@ -1,0 +1,57 @@
+<app-user-header></app-user-header>
+
+<!-- Header Section -->
+<header>
+    <div id="carouselExampleFade" class="carousel slide carousel-fade carosl" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active carosel-height">
+                <img src="./assets/images/pic10.jpg" class="d-block w-100 h-100" alt="...">
+            </div>
+            <div class="carousel-item carosel-height">
+                <img src="./assets/images/pic1.webp" class="d-block w-100 h-100" alt="...">
+            </div>
+            <div class="carousel-item carosel-height">
+                <img src="./assets/images/pic17.webp" class="d-block w-100 h-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</header>
+
+
+<!-- Latest Product Section -->
+<section class="page-section mt-5 mb-5" id="about">
+    <div class="container px-4 px-lg-5 text-center">
+
+        <h2 class="mt-0 mb-5 text-color">Our Latest Products</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-3">
+            <div class="col" *ngFor="let product of allProducts">
+                <div class="card h-100 card-div">
+                    <img [src]="product.image" class="card-image p-3" [alt]="product.title">
+                    <div class="card-body card-body-div">
+                        <p class="card-text"><button class="btn" routerLink="/products/view_product/{{product.id}}">View
+                                Product</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button  type="button" class="btn btn-bg mt-3" routerLink="/products">More Products</button>                   
+    </div>
+</section>
+

@@ -1,0 +1,33 @@
+.header-div{
+    height: 300px;
+    position: relative;
+}
+
+.heading{
+    position: absolute;
+    bottom: 30px;
+    left:0;
+    right:0;
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    color:white;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.btn-bg{
+    background-color: rgb(97, 35, 45);
+    color: white;
+}
+
+.animate__animated.animate__fadeInLeft {
+    --animate-duration: 5s;
+  }
+
+.animate__animated.animate__fadeInRight {
+    --animate-duration: 5s;
+  }
+
+.card:hover {
+    transform: scale(1.1);
+}

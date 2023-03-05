@@ -1,0 +1,159 @@
+<app-user-header></app-user-header>
+
+
+  <div class="container">
+    <div class="row">
+        <div class="col-md-1"></div>
+        
+        <!-- payment details -->
+        <div class="col-md-4 mt-5">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted" style="color: rgb(243, 133, 152);">Your cart</span>
+                <span class="badge rounded-pill badge-primary" style="color: rgb(243, 133, 152);">{{totalQuantity}} &nbsp;Items</span>
+            </h4>
+
+            <!-- Cart -->
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between">
+                    <div>
+                        <h6 class="my-0">Product Total</h6>
+                    </div>
+                    <span class="text-muted">${{  totalPrice }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <div>
+                        <h6 class="my-0">Tax</h6>
+                    </div>
+                    <span class="text-muted">${{tax}}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <div>
+                        <h6 class="my-0">Shipping Charge</h6>
+                    </div>
+                    <span *ngIf="shippingCost != 0" class="text-muted">${{shippingCost}}</span>
+                    <span *ngIf="shippingCost == 0" class="text-muted text-success">Free Shipping</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <div>
+                        <h6 class="my-0">Discount</h6>
+                    </div>
+                    <span class="text-muted">${{discountFee}}</span>
+                </li>
+
+                <li class="list-group-item d-flex justify-content-between">
+                    <span><b>Total Amount</b></span>
+                    <strong>${{grantTotal}}</strong>
+                </li>
+                
+            </ul>
+        </div>
+        <div class="col-md-6 mt-5">
+            <div class="card rounded-3">
+                <div class="card-body p-4">
+                  <div class="text-center mb-4">
+                    <h5>Payment</h5>
+                  </div>
+                  <form (ngSubmit)="payment()" [formGroup]="paymentForm">
+                    <div class="row mb-4">
+                        <div class="col">
+                          <div class="form-outline">
+                            <input name="name" formControlName="name" type="text" id="form11Example1" class="form-control" />
+                            <label class="form-label" for="form11Example1">First name</label>
+                          </div>
+                        </div>
+                        <div *ngIf="this.paymentForm.get('name')?.errors&&this.paymentForm.get('name')?.touched" class="text-danger mb-2">
+                            Required
+                        </div>
+                        <div class="col">
+                          <div class="form-outline">
+                            <input type="text" id="form11Example2" class="form-control" />
+                            <label class="form-label" for="form11Example2">Last name</label>
+                          </div>
+                        </div>
+                      </div>
+        
+                      <!-- Text input -->
+                      <div class="form-outline mb-4">
+                        <input name="phone" formControlName="phone" type="text" id="form11Example3" class="form-control" />
+                        <label class="form-label" for="form11Example3">Mobile</label>
+                      </div>
+                      <div *ngIf="this.paymentForm.get('phone')?.errors&&this.paymentForm.get('phone')?.touched" class="text-danger mb-2">
+                        Required
+                    </div>
+        
+                      <!-- Text input -->
+                      <div class="form-outline mb-4">
+                        <input name="address" formControlName="address" type="text" id="form11Example4" class="form-control" />
+                        <label class="form-label" for="form11Example4">Address</label>
+                      </div>
+                      <div *ngIf="this.paymentForm.get('address')?.errors&&this.paymentForm.get('address')?.touched" class="text-danger mb-2">
+                        Required
+                    </div>
+        
+                      <!-- Email input -->
+                      <div class="form-outline mb-4">
+                        <input name="place" formControlName="place" type="text" id="form11Example5" class="form-control" />
+                        <label class="form-label" for="form11Example5">Place</label>
+                      </div>
+                      <div *ngIf="this.paymentForm.get('place')?.errors&&this.paymentForm.get('place')?.touched" class="text-danger mb-2">
+                        Required
+                    </div>
+        
+                      <!-- Number input -->
+                      <div class="form-outline mb-4">
+                        <input name="zip" formControlName="zip" type="text" id="form11Example6" class="form-control" />
+                        <label class="form-label" for="form11Example6">Zip</label>
+                      </div>
+                      <div *ngIf="this.paymentForm.get('zip')?.errors&&this.paymentForm.get('zip')?.touched" class="text-danger mb-2">
+                        Required
+                    </div>
+        
+                    <p class="fw-bold mb-4">Add new card:</p>
+        
+                    <div class="form-outline mb-4">
+                      <input type="text" id="formControlLgXsd" class="form-control form-control-lg"
+                        value="" />
+                      <label class="form-label" for="formControlLgXsd">Cardholder's Name</label>
+                    </div>
+        
+                    <div class="row mb-4">
+                      <div class="col-7">
+                        <div class="form-outline">
+                          <input type="text" id="formControlLgXM" class="form-control form-control-lg"
+                            value="1234 5678 1234 5678" />
+                          <label class="form-label" for="formControlLgXM">Card Number</label>
+                        </div>
+                      </div>
+                      <div class="col-3">
+                        <div class="form-outline">
+                          <input type="password" id="formControlLgExpk" class="form-control form-control-lg"
+                            placeholder="MM/YYYY" />
+                          <label class="form-label" for="formControlLgExpk">Expire</label>
+                        </div>
+                      </div>
+                      <div class="col-2">
+                        <div class="form-outline">
+                          <input type="password" id="formControlLgcvv" class="form-control form-control-lg"
+                            placeholder="Cvv" />
+                          <label class="form-label" for="formControlLgcvv">Cvv</label>
+                        </div>
+                      </div>
+                    </div>
+
+        
+                    <div class="text-danger">{{ errorMsg }}</div>
+
+                    <button class="btn btn-success btn-lg btn-block w-100">Make Payment
+                        <span *ngIf="successMsg" class="spinner-border text-light" role="status">
+                            <span class="visually-hidden">Please wait...</span>
+                        </span>
+                    </button>
+                    <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+                  </form>
+                </div>
+              </div>
+        </div>
+
+        <div class="col-md-1"></div>
+    </div>
+  </div>

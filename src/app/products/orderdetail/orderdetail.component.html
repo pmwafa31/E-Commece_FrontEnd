@@ -1,0 +1,97 @@
+<app-user-header></app-user-header>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8 mt-3">
+      <div>
+        <div class="mb-4">
+          <h3 style="color: rgb(241, 129, 148);">Order Details</h3>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card mt-2" style="height: 200px;">
+                    <div class="card-header">
+                      <div class="d-flex justify-content-between">
+                            <h6>Order Summary</h6>
+                            <a routerLink="/products/invoice/{{orderId}}">Get Invoice</a>
+                      </div >
+                    </div>
+                    <div class="card-body">
+                            <table class="table table-borderless">
+                                <tr>
+                                    <td>Items(s) Subtotal</td>
+                                    <td>${{totalPrice}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Tax</td>
+                                    <td>${{tax}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Shipping Cost</td>
+                                    <td *ngIf="shippingCost != 0">${{shippingCost}}</td>
+                                    <td *ngIf="shippingCost == 0" class="text-success">Free Shipping</td>
+                                </tr>
+                                <tr>
+                                    <td>Discount</td>
+                                    <td>${{discountFee}}</td>
+                                </tr>
+                                <tr style="font-weight: bolder;">
+                                    <td>Grant Total</td>
+                                    <td>${{grantTotal}}</td>
+                                </tr>
+                            </table>
+                          
+                    </div>
+                  </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mt-2" style="height: 200px;">
+                    <div class="card-header">
+                        <h6>Shipping Address</h6>
+                    </div>
+                    <div class="card-body" *ngFor="let adr of shipAddress">
+                        <span>{{adr.name}}</span><br>
+                        <span>{{adr.phone}}</span><br>
+                        <span>{{adr.address}}</span><br>
+                        <span>{{adr.place}}</span><br>
+                        <span>{{adr.zip}}</span>
+                    </div>
+                  </div>
+            </div>
+        </div> 
+        <div class="row mt-4">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h6>Items</h6>
+                    </div>
+                    <div class="card-body">
+                      <table class="table table-borderless text-center p-2">
+                        <thead>
+                            <tr>
+                              <th scope="col">Item</th>
+                              <th scope="col">Qty</th>
+                              <th scope="col">Total Price</th>
+                            </tr>
+                          </thead>
+                        <tbody>
+                          <tr *ngFor="let products of allProducts">
+                            <td><img [src]="products.image" alt="" width="80px" height="80px"></td>
+                            <td>{{products.quantity}}</td>
+                            <td>${{products.totalCost}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>
+
+
+

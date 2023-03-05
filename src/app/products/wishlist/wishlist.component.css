@@ -1,0 +1,23 @@
+empty-cart{
+    margin-top: 80px;
+}
+
+.btn-checkout{
+    background-color: rgb(241, 143, 159);
+}
+.card:hover {
+    transform: scale(1.1);
+  }
+
+.btn-bg{
+    background-color: rgb(97, 35, 45);
+    color: white;
+}
+
+.heading{
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    color:rgb(218, 123, 138);
+    font-size: 40px;
+    font-weight: bold;
+}

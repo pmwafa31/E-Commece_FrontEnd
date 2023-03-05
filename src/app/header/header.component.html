@@ -1,0 +1,146 @@
+
+<nav class="navbar navbar-expand-lg navbar-light navbar-bg sticky-top">
+  <div class="container-fluid mx-2">
+    <a class="navbar-brand" routerLink="/">
+      <img src="./assets/images/logo.png" alt="no-logo"class="d-inline-block align-text-top" width="170" height="40">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <form class="d-flex">
+          <input (keyup)="search($event)" class="form-control me-2" type="search" placeholder="Search for Products" aria-label="Search">
+      </form>
+      <button class="btn" routerLink="/products"><i class="fa-solid fa-magnifying-glass text-white"></i></button>
+
+      <ul class="navbar-nav mb-2 mb-lg-0  ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLink="/products">Shop Now</a>
+        </li>    
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/register">Sign Up</a>
+        </li>
+        <li  class="nav-item">
+          <a class="nav-link" routerLink="/login">Login</a>
+        </li>
+        <!-- <li class="nav-item d-flex ">
+          <a class="nav-link" routerLink="/products/cart/id"><i class="fa badge" style="color: rgb(241, 129, 148);font-size: 16px;" value=0>&#xf07a;</i>
+          </a>
+        </li> -->
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- <nav class="navbar navbar-expand-lg navbar-light navbar-bg sticky-top">
+    <div class="container-fluid mx-2">
+      <button *ngIf="(loginItem=='true')" class="btn" style="color: rgb(241, 129, 148); font-size:large" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <a class="navbar-brand" routerLink="/">
+        <img src="./assets/images/logo.png" alt="no-logo"class="d-inline-block align-text-top" width="170" height="40">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <form class="d-flex">
+            <input (keyup)="search($event)" class="form-control me-2" type="search" placeholder="Search for Products" aria-label="Search">
+        </form>
+        <button class="btn" routerLink="/all_products"><i class="fa-solid fa-magnifying-glass text-white"></i></button>
+
+        <ul class="navbar-nav mb-2 mb-lg-0  ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink="all_products">Shop Now</a>
+          </li>
+          <li *ngIf="(loginItem=='true')" class="nav-item dropdown">
+            <a  class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Hi,&nbsp;{{ name }}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" routerLink="/products/wishlist">Your Wishlist</a></li>
+              <li><a class="dropdown-item" routerLink="/mini_statement">Your Orders</a></li>
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item btn" href="" data-bs-toggle="modal" data-bs-target="#staticBackdrop" ><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Delete Account</a></li>
+              <li><a (click)="logOut()" class="dropdown-item btn" ><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Log Out</a></li>
+            </ul>
+          </li>
+          <li *ngIf="(loginItem=='')" class="nav-item">
+            <a class="nav-link" routerLink="/register">Sign Up</a>
+          </li>
+          <li *ngIf="(loginItem=='')" class="nav-item">
+            <a class="nav-link" routerLink="/login">Login</a>
+          </li>
+          <li *ngIf="(loginItem=='true')" class="nav-item d-flex ">
+            <a class="nav-link" routerLink="/products/wishlist"><i class="fa-regular fa-heart" style="color: rgb(241, 129, 148);font-size: 16px;"></i>
+            </a>
+          </li>
+          <li *ngIf="(loginItem=='true')" class="nav-item d-flex ">
+            <a class="nav-link" routerLink="/products/cart/id"><i class="fa badge" style="color: rgb(241, 129, 148);font-size: 16px;" value=0>&#xf07a;</i>
+            </a>
+          </li>
+          <li>
+            <span *ngIf="logoutSpinner" class="spinner-border text-light" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </span>
+        </ul>
+      </div>
+    </div>
+  </nav> -->
+
+  <!-- Offcanvas for actions -->
+  
+<!-- <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <a class="navbar-brand" routerLink="/">
+      <img src="./assets/images/logo.png" alt="no-logo"class="d-inline-block align-text-top" width="170" height="40">
+    </a>    
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    
+    <div class="list-group list-group-flush my-3 pt-3">
+      <a  class="list-group-item list-group-item-action bg-transparent  fw-bold mb-2"><i class="fa-solid fa-bag-shopping me-2"></i>Shop Now</a>
+      <a  class="list-group-item list-group-item-action bg-transparent  fw-bold mb-2" routerLink="/products/wishlist"><i class="fa-regular fa-heart me-2"></i>Your Wishlist</a>
+      <a  class="list-group-item list-group-item-action bg-transparent  fw-bold mb-2"><i class="fa-solid fa-cart-plus me-2"></i>Your Cart</a>
+      <a  class="list-group-item list-group-item-action bg-transparent  fw-bold mb-2"><i class="fa fa-bag-shopping me-2"></i>Your Orders</a>
+      <a  class="list-group-item list-group-item-action bg-transparent  fw-bold mb-2" href="" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa fa-trash me-2"></i>Delete Account </a>
+      <a  (click)="logOut()" class="list-group-item list-group-item-action bg-transparent  fw-bold mb-2 btn"><i class="fa fa-sign-out me-2"></i>Log Out 
+        <span *ngIf="logoutSpinner" class="spinner-border text-dark" role="status">
+          <span class="visually-hidden">Loading...</span>
+      </span>
+      </a>
+        
+  </div>
+  </div> 
+</div> -->
+
+
+<!-- Modal for delete account-->
+<!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button (click)="logOut()"  type="submit" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- logout spinner -->
+<!-- <div *ngIf="logoutSpinner" class="container mt-5 p-5">
+  <div class="text-center">
+    <img class="delete-image" src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif?20151024034921"  alt="spinner">
+    <h4><b>Please wait while logging out.....</b></h4>
+  </div>
+</div> --> 

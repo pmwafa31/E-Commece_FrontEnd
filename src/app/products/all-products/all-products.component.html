@@ -1,0 +1,40 @@
+<!-- when logged in -->
+<app-user-header *ngIf="isLogin"></app-user-header>
+
+<!-- when not logged in -->
+<app-product-header *ngIf="!isLogin"></app-product-header>
+
+<div class="container-fluid header-div m-0 p-0">
+    <img src="./assets/images/pic15.jpg" alt="" class="w-100 h-100 animate__animated animate__fadeInRight">
+    <h4 class="heading animate__animated animate__fadeInLeft">We care your happiness....Pick the best Teddy for your loved one's....</h4>
+</div>
+
+
+<div class="container px-4 px-lg-5 mt-5">
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        <div class="col mb-5" *ngFor="let product of allProducts | filter : searchItem : 'title' ">
+            <div class="card h-100">
+                <button (click)="addWishlist(product)" type="button" class="btn ms-auto mb-0 text-warning" ><i class="fa-regular fa-heart"></i></button>
+                <!-- Product image-->
+                <a routerLink="view_product/{{ product.id }}"><img class="card-img-top p-3" [src]="product.image" [alt]="product.title" height="200px" />
+                </a>
+                <!-- Product details-->
+                <div class="card-body">
+                        <h5 class="text-center">{{ product.title.slice(0,10)}}...</h5>         
+                        <div class="d-flex justify-content-between">
+                        <span class="mb-0 text-danger">${{ product.price }}</span>
+                        <span class="disabled placeholder bg-success text-white p-1" style="font-size:small;">{{ product.rating.rate }}&nbsp;<i class="fa-solid fa-star" style="font-size:x-small;"></i></span> 
+
+                        </div>
+                      <!-- <ngb-rating [max]="5" [(rate)]="product.rating.rate" [readonly]="false"></ngb-rating>                 -->
+
+                </div>
+                <!-- Product actions-->
+                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                     <button class="btn btn-bg w-100" routerLink="view_product/{{ product.id }}"><i class="fa-solid fa-eye"></i>&nbsp;&nbsp;View Product</button>                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

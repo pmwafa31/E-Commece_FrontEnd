@@ -1,0 +1,40 @@
+<app-user-header></app-user-header>
+
+<!-- wishlist empty -->
+<div *ngIf="isEmpty" class="container text-center">
+    <div class="row mb-5 mt-5">
+        <div class="col empty-cart">
+            <img src="./assets/images/cart1.webp" alt="" width="150">
+            <h4>{{ emptyMsg }}</h4>
+            <a routerLink="/products" class="btn btn-checkout animate__animated animate__pulse animate__infinite	infinite">Continue Shopping</a>
+        </div>
+    </div>
+  </div>
+
+<!-- wishlist -->
+ 
+<div *ngIf="!isEmpty" class="container px-4 px-lg-5 mt-5">
+    <h6 class="heading animate__animated animate__pulse animate__infinite	infinite">Items are waiting for you...Grab it soon......</h6>
+  <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center mt-5">
+      <div class="col mb-5" *ngFor="let product of allProduct">
+           <div class="card h-100">
+              <div class="d-flex">
+                <a class="btn ms-auto mb-0 text-success" (click)="addCart(product)" style="margin-right: 100px;"><i class="fa-solid fa-cart-plus"></i></a>
+                <a class="btn ms-auto mb-0 me-2 text-danger" (click)="deleteItem(product.id)"><i class="fa fa-trash"></i></a>
+              </div>
+              <img class="card-img-top p-3" [src]="product.image" [alt]="product.title" height="200px" />
+              <div class="card-body">
+                      <h5 class="text-center">{{ product.title.slice(0,10)}}...</h5>         
+                      <div class="d-flex justify-content-between">
+                      <span class="mb-0 text-danger">${{ product.price }}</span>
+                      <span class="disabled placeholder bg-success text-white p-1" style="font-size:small;">{{ product.rating.rate }}&nbsp;<i class="fa-solid fa-star" style="font-size:x-small;"></i></span> 
+                      </div>
+
+              </div>
+              <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                   <button class="btn btn-bg w-100" routerLink="/products/view_product/{{ product.id }}"><i class="fa-solid fa-eye"></i>&nbsp;&nbsp;View Product</button>                   
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

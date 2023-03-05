@@ -1,0 +1,74 @@
+<app-header></app-header>
+
+<div class="container text-center p-5 mt-2">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 ">
+            <div class="card mt-3">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="./assets/images/pic14.jpg" class="img-fluid rounded-start h-100" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h3 class="card-title heading">Create an account</h3>
+                      <form (ngSubmit)="register()" [formGroup]="registerForm" class="mt-4">
+                        <!-- Name input -->
+                        <div class="form-outline mb-3">
+                            <input name="uname" formControlName="name" type="text"  class="form-control" placeholder="Name"/>
+                          </div>
+                          <!-- invalid name -->
+                          <div *ngIf="this.registerForm.get('name')?.errors&&this.registerForm.get('name')?.touched" class="text-danger mb-2">
+                              Inavalid username
+                          </div>
+                           <!-- Email input -->
+                        <div class="form-outline mb-3">
+                            <input name="email" formControlName="email" type="email"  class="form-control" placeholder="Email id"/>
+                          </div>
+                          <!-- invalid email -->
+                          <div *ngIf="this.registerForm.get('email')?.errors&&this.registerForm.get('email')?.touched" class="text-danger mb-2">
+                              Inavalid email id
+                          </div>
+                        <!-- Phone number input -->
+                        <div class="form-outline mb-3">
+                          <input name="phone" formControlName="phone" type="text"  class="form-control " placeholder="Phone Number" />
+                        </div>
+                        <!-- invalid phone number -->
+                        <div *ngIf="this.registerForm.get('phone')?.errors&&this.registerForm.get('phone')?.touched" class="text-danger mb-2">
+                            Inavalid Phone Number
+                        </div>
+                        <!-- Password input -->
+                        <div class="form-outline mb-3">
+                          <input name="pswd" formControlName="pswd" type="password"  class="form-control" placeholder="Password" />
+                        </div>
+                        <!-- invalid password -->
+                        <div *ngIf="this.registerForm.get('pswd')?.errors&&this.registerForm.get('pswd')?.touched" class="text-danger mb-2">
+                            Inavalid Password
+                        </div>
+                        <!-- Password input -->
+                        <!-- <div class="form-outline mb-3">
+                            <input name="confirm_pswd" formControlName="confirm_pswd" type="password"  class="form-control" placeholder="Confirm Password" />
+                          </div> -->
+                          <!-- invalid password -->
+                          <!-- <div *ngIf="this.registerForm.get('confirm_pswd')?.errors&&this.registerForm.get('confirm_pswd')?.touched" class="text-danger mb-2">
+                              Inavalid Password
+                          </div> -->
+                        
+                        <div class="text-danger">{{ errorMsg }}</div>
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-lg btn-block btn-register mb-1">Register</button>
+                     </form>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div> 
+</div>
+
+
+    
+
+
+

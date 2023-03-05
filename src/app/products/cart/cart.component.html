@@ -1,0 +1,93 @@
+<app-user-header></app-user-header>
+
+<!-- Empty Shopping Cart -->
+<div *ngIf="isEmpty" class="container text-center mb-5">
+  <div class="row ">
+      <div class="col empty-cart">
+          <img src="./assets/images/cart1.webp" alt="" width="150">
+          <h4>{{emptyMsg}}</h4>
+          <a routerLink="/products" class="btn btn-checkout animate__animated animate__pulse animate__infinite	infinite">Continue Shopping</a>
+      </div>
+  </div>
+</div>
+
+<!-- Shopping Cart  -->
+<div *ngIf="!isEmpty" class="d-flex justify-content-center mt-5">
+    <div class="card mb-3" style="width: 1000px;">
+        <div class="row g-0">
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Shopping Cart</h5>
+              <table class="table text-center mt-4">
+                <thead>
+                  <tr>
+                    <td scope="col">No</td>
+                    <td scope="col">Product</td>
+                    <td scope="col">Price</td>
+                    <td scope="col">quantity</td>
+                    <td scope="col">Total Price</td>
+                    <td scope="col"></td>
+                  </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                  <tr *ngFor="let product of allProduct; let i = index">
+                    <th scope="row" class="align-middle">{{ i+1 }}</th>
+                    <td class="align-middle"><a routerLink="/view_product/product.id"><img [src]="product.image" alt="" width="80px" height="80px"></a></td>
+                    <td class="align-middle">{{ product.price}}</td>
+                    <td class="align-middle">
+                      <div class="d-flex justify-content-center">
+                        <button *ngIf ='product.quantity>1' (click)="reduceQuantity(product.id)" class="btn btn-link px-2"
+                          onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                          <i class="fas fa-minus"></i>
+                        </button>
+                        <input id="form1" min="1" name="quantity" [value]="product.quantity" type="number" style="width: 40px;"/>
+                        <button (click)="addQuantity(product.id)" class="btn btn-link px-2"
+                          onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                          <i class="fas fa-plus"></i>
+                        </button>
+                      </div>
+                    </td>
+                    <td class="align-middle">{{ product.price * product.quantity }}</td>
+                    <td class="align-middle"><a class="btn text-secondary" (click)="deleteItem(product.id)"><i class="fa-solid fa-trash"></i></a></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a routerLink="/products" class="btn btn-checkout mt-4">Continue Shopping</a>
+            </div>
+          </div>
+          <div class="col-md-4 text-center summary-div">
+            <div class="card-body ">
+              <h5 class="card-title">Summary</h5>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between align-items-center border-0  pb-0">
+                  Products Total
+                  <span>${{ totalPrice }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center border-0  pb-0">
+                  Shipping Cost
+                  <span *ngIf="shippingCost !=0">${{ shippingCost }}</span>
+                  <span *ngIf="shippingCost ==0" class="text-success">Free Shipping</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Tax
+                  <span>${{ tax }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center pb-0">
+                  Discount
+                  <span >${{discountFee}}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center border-0 mb-3">
+                  <div>
+                    <strong>Total amount</strong>
+                  </div>
+                  <span><strong>${{ grantTotal }}</strong></span>
+                </li>
+              </ul>
+              <button routerLink="/products/checkout" type="button" class="btn btn-checkout w-100">
+                Checkout
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
